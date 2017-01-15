@@ -273,9 +273,10 @@ static int sw_read( struct cdev *cdev, struct uio *uio, int ioflag __unused)
 {
   duprintf("read - start, uio_resid=%i\n", uio->uio_resid);
   struct gpio_sw_softc *sc = cdev->si_drv1 ;
-  if ( uio->uio_resid >= sc->BufSize) return EINVAL ;
+  if ( uio->uio_resid >= sc->BufSize) sc->Len=sc->BufSize-1 ; // to work with buffered IO
+  else sc->Len=uio->uio_resid;
+
   if ( ! sc->GpioStatus) return ENXIO ;
-  sc->Len = uio->uio_resid ;
   int i = 0 ;
   while ( i < sc->Len)
   {
