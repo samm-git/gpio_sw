@@ -1,5 +1,4 @@
 // based on gpioled.c
-// комментарии в кодировке koi8-r
 
 #include <sys/cdefs.h>
 
