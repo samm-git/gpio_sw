@@ -28,6 +28,7 @@ int main( int ArgC, char *ArgV[])
   int Hum = BufToShort( &Buf[ 0]) ;  
   int Temp = BufToShort( &Buf[ 2]) ;
   if ( Temp & 0x8000) Temp = (Temp & 0x7FFF)*-1 ;
+  printf("h:%d.%d %%, t:%d.%d C\n",Buf[0],Buf[1],Buf[2],Buf[3]);
   printf("Hum=%i\nTem=%i\n", Hum, Temp) ;
   return 0 ;
 } ;
